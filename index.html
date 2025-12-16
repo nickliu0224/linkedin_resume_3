@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nick Liu - 資深專案經理</title>
+    <!-- 載入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        .page-section { display: none; opacity: 0; transition: opacity 0.3s ease-in-out; }
+        .page-section.active { display: block; opacity: 1; }
+        /* 時間軸線條 */
+        .timeline-line { position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background-color: #e0e7ff; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+
+    <!-- 導覽列 -->
+    <nav class="bg-slate-900 text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="font-bold text-xl cursor-pointer flex items-center gap-2 hover:text-blue-400 transition-colors" onclick="showPage('home')">
+                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">NL</div>
+                    <span>Nick Liu</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="showPage('home')" class="nav-btn flex items-center gap-2 px-3 py-2 rounded-md transition-all text-slate-300 hover:text-white hover:bg-slate-800" data-target="home">
+                        個人簡介
+                    </button>
+                    <button onclick="showPage('experience')" class="nav-btn flex items-center gap-2 px-3 py-2 rounded-md transition-all text-slate-300 hover:text-white hover:bg-slate-800" data-target="experience">
+                        工作經歷
+                    </button>
+                    <button onclick="showPage('education')" class="nav-btn flex items-center gap-2 px-3 py-2 rounded-md transition-all text-slate-300 hover:text-white hover:bg-slate-800" data-target="education">
+                        學歷與證照
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-slate-300 hover:text-white p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-slate-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <button onclick="showPage('home')" class="block w-full text-left px-3 py-3 rounded-md text-base font-medium text-slate-300 hover:bg-slate-700 hover:text-white">個人簡介</button>
+                <button onclick="showPage('experience')" class="block w-full text-left px-3 py-3 rounded-md text-base font-medium text-slate-300 hover:bg-slate-700 hover:text-white">工作經歷</button>
+                <button onclick="showPage('education')" class="block w-full text-left px-3 py-3 rounded-md text-base font-medium text-slate-300 hover:bg-slate-700 hover:text-white">學歷與證照</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要內容區 -->
+    <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
+        
+        <!-- 1. 首頁 (Home) -->
+        <div id="home" class="page-section active space-y-8">
+            <!-- Hero Section -->
+            <div class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white rounded-3xl overflow-hidden shadow-2xl p-8 md:p-16">
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
+                    <div class="flex-1 space-y-6">
+                        <div>
+                            <h2 class="text-blue-400 font-medium tracking-wider uppercase mb-2">Portfolio</h2>
+                            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-2">Nick Liu</h1>
+                            <h3 class="text-xl md:text-2xl text-slate-300 font-light">資深專案經理 (Senior Project Manager)</h3>
+                        </div>
+                        <p class="text-slate-300 text-lg leading-relaxed max-w-2xl">
+                            擁有超過 10 年經驗的資深專案經理，專精於軟體開發、遊戲平台及行動應用程式專案管理。具備領導跨職能團隊（前端、後端、設計、QA）的豐富經驗，擅長與國際客戶溝通需求、風險管理及流程優化。英語流利，具備 PMP 思維與敏捷開發實務經驗。
+                        </p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
+                            <a href="mailto:ashin524@gmail.com" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-all shadow-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                聯絡我 (Email)
+                            </a>
+                            <a href="https://www.linkedin.com/in/nick-liu-177155117" target="_blank" class="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-full font-medium border border-slate-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                                LinkedIn
+                            </a>
+                             <!-- GitHub Button -->
+                             <a href="https://github.com/username" target="_blank" class="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-full font-medium border border-gray-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 6 6 6 9.81 1 2.22.65 3.33 3.33 3.33 5.33-4 1.25-5.91 3.5-9.45 3.5H9a2 2 0 0 1-2-2v-4H3c-1 0-2 1-2 2v10"/><path d="M16 22h4v-3a2 2 0 0 0-2-2h-2"/><path d="M9 22H5v-2a2 2 0 0 1 2-2h2"/></svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-10">
+                <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                    <span class="p-2 bg-blue-100 text-blue-600 rounded-lg">✓</span> 專業技能 (Skills)
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="p-4 bg-slate-50 border border-slate-100 rounded-xl font-medium text-slate-700">專案管理 (Project Management)</div>
+                    <div class="p-4 bg-slate-50 border border-slate-100 rounded-xl font-medium text-slate-700">團隊領導 (Team Leadership)</div>
+                    <div class="p-4 bg-slate-50 border border-slate-100 rounded-xl font-medium text-slate-700">軟體測試與品質保證 (QA & Testing)</div>
+                    <div class="p-4 bg-slate-50 border border-slate-100 rounded-xl font-medium text-slate-700">跨部門溝通 (Cross-functional Comm.)</div>
+                    <div class="p-4 bg-slate-50 border border-slate-100 rounded-xl font-medium text-slate-700">需求分析 (Requirements Analysis)</div>
+                    <div class="p-4 bg-slate-50 border border-slate-100 rounded-xl font-medium text-slate-700">敏捷開發 (Agile/Scrum)</div>
+                    <div class="p-4 bg-slate-50 border border-slate-100 rounded-xl font-medium text-slate-700">風險管理 (Risk Management)</div>
+                    <div class="p-4 bg-slate-50 border border-slate-100 rounded-xl font-medium text-slate-700">JIRA & Confluence</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 工作經歷 (Experience) -->
+        <div id="experience" class="page-section bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12">
+            <div class="flex items-center gap-3 mb-10 border-b border-slate-100 pb-6">
+                <div class="p-3 bg-indigo-100 text-indigo-600 rounded-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-800">工作經歷</h2>
+                    <p class="text-slate-500">Professional Experience</p>
+                </div>
+            </div>
+
+            <div class="relative ml-3 md:ml-6 pl-8 md:pl-12 py-2">
+                <div class="timeline-line"></div>
+                
+                <!-- Job 1 -->
+                <div class="relative group mb-12">
+                    <div class="absolute -left-[41px] md:-left-[59px] top-0 w-6 h-6 rounded-full border-4 border-white bg-indigo-500 shadow-md"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">91APP, Inc.</h3>
+                            <div class="text-lg font-medium text-indigo-600 mt-1">專案經理 (Project Manager)</div>
+                        </div>
+                        <div class="text-right flex flex-col items-start md:items-end">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-sm font-medium mb-1">2024年9月 - Present</span>
+                            <span class="text-slate-400 text-sm">台灣 臺北市</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 list-disc pl-5 text-slate-600">
+                        <li>負責新零售軟體專案管理與交付。</li>
+                        <li>協調跨部門資源，確保專案按時上線。</li>
+                    </ul>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="relative group mb-12">
+                    <div class="absolute -left-[41px] md:-left-[59px] top-0 w-6 h-6 rounded-full border-4 border-white bg-indigo-500 shadow-md"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">奕特資訊有限公司 (前晶峰科技)</h3>
+                            <div class="text-lg font-medium text-indigo-600 mt-1">資深專案經理 (Senior Project Manager)</div>
+                        </div>
+                        <div class="text-right flex flex-col items-start md:items-end">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-sm font-medium mb-1">2018年5月 - 2024年5月</span>
+                            <span class="text-slate-400 text-sm">台灣 台北市 內湖區</span>
+                        </div>
+                    </div>
+                    <div class="text-sm text-amber-600 bg-amber-50 px-3 py-1 rounded inline-block mb-3 border border-amber-100">⚠️ 2020年9月由晶峰科技改名為奕特資訊</div>
+                    <ul class="space-y-3 list-disc pl-5 text-slate-600">
+                        <li>負責管理遊戲入口網站專案（PC, Mobile, APP）的開發與維運。</li>
+                        <li>擔任專案負責人，領導包含前後端工程師、設計師與測試人員的開發團隊。</li>
+                        <li>與國際客戶協調，理解、分析並確認需求。</li>
+                        <li>規劃專案時程、分派任務、管理風險，促進溝通直至專案上線。</li>
+                        <li>建立開發滿意度調查機制，識別並解決問題，提升團隊服務品質。</li>
+                        <li>優化並導入測試案例 (Test Cases)、程式碼審查 (Code Review) 及工作日誌 (Worklog) 機制。</li>
+                        <li>協助建立並維護公司專案知識庫 (使用 Confluence 與 JIRA)。</li>
+                    </ul>
+                </div>
+
+                 <!-- Job 3 -->
+                 <div class="relative group mb-12">
+                    <div class="absolute -left-[41px] md:-left-[59px] top-0 w-6 h-6 rounded-full border-4 border-white bg-indigo-500 shadow-md"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">TutorABC</h3>
+                            <div class="text-lg font-medium text-indigo-600 mt-1">資深產品經理 (Senior Product Manager)</div>
+                        </div>
+                        <div class="text-right flex flex-col items-start md:items-end">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-sm font-medium mb-1">2016年6月 - 2018年5月</span>
+                            <span class="text-slate-400 text-sm">台灣</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 list-disc pl-5 text-slate-600">
+                        <li>管理多個軟體應用程式專案，負責時程控制、議題管理與版本更新。</li>
+                        <li>開發並管理新軟體需求，管理外包解決方案。</li>
+                        <li>與 Android, iOS, Infra, Backend, Creative 及 QA 等跨職能團隊合作。</li>
+                        <li>確保 UI/UX 設計的技術可行性。</li>
+                        <li>確保軟體專案在範疇與預算內按時交付。</li>
+                        <li>管理已發布應用程式的維護流程與 Bug 修復。</li>
+                    </ul>
+                </div>
+
+                 <!-- Job 4 -->
+                 <div class="relative group mb-12">
+                    <div class="absolute -left-[41px] md:-left-[59px] top-0 w-6 h-6 rounded-full border-4 border-white bg-indigo-500 shadow-md"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">Acer (宏碁)</h3>
+                            <div class="text-lg font-medium text-indigo-600 mt-1">軟體產品經理 (Software Product Manager)</div>
+                        </div>
+                        <div class="text-right flex flex-col items-start md:items-end">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-sm font-medium mb-1">2014年6月 - 2016年6月</span>
+                            <span class="text-slate-400 text-sm">台北</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 list-disc pl-5 text-slate-600">
+                        <li>管理 Acer 智慧型手機產品的軟體時程與規格定義。</li>
+                        <li>建立並整合不同產品間的使用者體驗一致性。</li>
+                        <li>領導 ODM 軟體團隊按時達成各項軟體里程碑。</li>
+                        <li>建立 SOP 與權責劃分 (R&R)，加速產品交付。</li>
+                        <li>監控系統效能、音訊、相機、觸控及 UI 體驗的驗證結果。</li>
+                        <li>為電信商 (CHT, T-Mobile, Telenor 等) 提供軟體客製化服務。</li>
+                        <li>監督 WHQL 與 Google CTS 等認證提交。</li>
+                    </ul>
+                </div>
+
+                 <!-- Job 5 -->
+                 <div class="relative group">
+                    <div class="absolute -left-[41px] md:-left-[59px] top-0 w-6 h-6 rounded-full border-4 border-white bg-indigo-500 shadow-md"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">Acer (宏碁)</h3>
+                            <div class="text-lg font-medium text-indigo-600 mt-1">資深專案工程師 (Senior Project Engineer)</div>
+                        </div>
+                        <div class="text-right flex flex-col items-start md:items-end">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-sm font-medium mb-1">2010年9月 - 2014年6月</span>
+                            <span class="text-slate-400 text-sm">台北</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 list-disc pl-5 text-slate-600">
+                        <li>領導 Acer 行動產品跨平台測試，安排時程、資源並處理議題。</li>
+                        <li>在海內外進行場測 (Field Trial)，識別通訊與系統問題。</li>
+                        <li>除錯、驗證並排除軟硬體及電信商問題。</li>
+                        <li>根據規格與電信商需求建立測試案例。</li>
+                        <li>與客戶（電信商與零售商）進行現場支援與聯合測試。</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 3. 學歷與證照 (Education) -->
+        <div id="education" class="page-section space-y-8">
+            <!-- Education -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12">
+                <div class="flex items-center gap-3 mb-8 border-b border-slate-100 pb-4">
+                    <div class="p-3 bg-emerald-100 text-emerald-600 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-800">學歷</h2>
+                        <p class="text-slate-500">Education</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm text-2xl border border-slate-100 shrink-0">🎓</div>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-slate-800">淡江大學 (Tamkang University)</h3>
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mt-2 md:mt-0">2004 - 2008</span>
+                        </div>
+                        <p class="text-lg text-slate-600">資訊管理學系 學士 (Bachelor, Information Management)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12">
+                <div class="flex items-center gap-3 mb-8 border-b border-slate-100 pb-4">
+                    <div class="p-3 bg-orange-100 text-orange-600 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-800">證照與資格</h2>
+                        <p class="text-slate-500">Certifications</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="flex items-center gap-4 p-5 bg-gradient-to-r from-slate-50 to-white rounded-xl border border-slate-200">
+                        <div class="p-3 bg-white rounded-full shadow-sm text-orange-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800">TOEIC 805</h3>
+                            <p class="text-sm text-slate-500 mt-1">Issuer: ETS</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-5 bg-gradient-to-r from-slate-50 to-white rounded-xl border border-slate-200">
+                        <div class="p-3 bg-white rounded-full shadow-sm text-orange-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800">Google Analytics Individual</h3>
+                            <p class="text-sm text-slate-500 mt-1">Issuer: Google</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-8 py-8 text-center text-slate-500 text-sm">
+        © <span id="year"></span> Nick Liu. All rights reserved.
+    </footer>
+
+    <script>
+        // 設定年份
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 頁面切換邏輯
+        function showPage(pageId) {
+            // 隱藏所有頁面
+            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+            // 顯示目標頁面
+            document.getElementById(pageId).classList.add('active');
+            
+            // 更新按鈕狀態
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if(btn.getAttribute('data-target') === pageId) {
+                    btn.classList.add('bg-blue-600', 'text-white', 'font-medium');
+                    btn.classList.remove('text-slate-300', 'hover:bg-slate-800');
+                } else {
+                    btn.classList.remove('bg-blue-600', 'text-white', 'font-medium');
+                    btn.classList.add('text-slate-300', 'hover:bg-slate-800');
+                }
+            });
+            // 手機版切換後自動關閉選單
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        // 手機選單開關
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // 初始化：預設顯示首頁
+        showPage('home');
+    </script>
+</body>
+</html>
